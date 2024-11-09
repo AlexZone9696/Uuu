@@ -71,7 +71,7 @@ def is_valid_private_key(private_key):
 @bot.message_handler(commands=["balance"])
 def balance_command(message):
     if len(user_wallets) > 0:
-        w3 = web3.Web3(web3.Web3.HTTPProvider('https://goerli.infura.io/v3/6ea52d53fe7446afb28ddb4cc98afb5a'))
+        w3 = web3.Web3(web3.Web3.HTTPProvider('https://mainnet.infura.io/v3/6ea52d53fe7446afb28ddb4cc98afb5a'))
 
         private_key = user_wallets[0]
         public_key = Account.from_key(private_key)
@@ -127,7 +127,7 @@ def is_valid_address(address):
         return False
 
 def send_transaction(private_key, receiver_address, amount):
-    w3 = web3.Web3(web3.Web3.HTTPProvider('https://goerli.infura.io/v3/6ea52d53fe7446afb28ddb4cc98afb5a'))
+    w3 = web3.Web3(web3.Web3.HTTPProvider('https://mainnet.infura.io/v3/6ea52d53fe7446afb28ddb4cc98afb5a'))
     account = Account.from_key(private_key)
     nonce = w3.eth.get_transaction_count(account.address)
     gas_price = w3.eth.gas_price
